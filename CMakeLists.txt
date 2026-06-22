@@ -14,3 +14,5 @@ add_executable(2DOF ${SOURCES})
 target_include_directories(2DOF PRIVATE
     "${PROJECT_SOURCE_DIR}/src"
 )
+
+target_link_libraries(2DOF PRIVATE m)
