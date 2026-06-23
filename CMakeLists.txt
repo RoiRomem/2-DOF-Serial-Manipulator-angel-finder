@@ -12,7 +12,7 @@ file(GLOB_RECURSE SOURCES
 add_executable(2DOF ${SOURCES})
 
 target_include_directories(2DOF PRIVATE
-    "${PROJECT_SOURCE_DIR}/src"
+    "${PROJECT_SOURCE_DIR}/engine"
 )
 
 target_link_libraries(2DOF PRIVATE m)
