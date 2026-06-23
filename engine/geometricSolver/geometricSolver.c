@@ -1,6 +1,11 @@
 #include "geometricSolver.h"
 #include <math.h>
-
+#ifdef _WIN32
+#define EXPORT __declspec(dllexport)
+#else
+#define EXPORT __attribute__((visibility("default")))
+#endif
+__attribute__((visibility("default")))
 // output error tracking: 0,0 out of reach
 anglePair solve(target *t, int elbowUp) {
   double x = t->targetPos.x;

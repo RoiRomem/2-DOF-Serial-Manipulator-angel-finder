@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
-
 project(2DOF C)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_VISIBILITY_PRESET default)
 
-file(GLOB ENGINE_SOURCES "${PROJECT_SOURCE_DIR}/engine/*.c")
+file(GLOB_RECURSE ALL_SOURCES "${PROJECT_SOURCE_DIR}/engine/*.c")
 
-add_library(ik_engine SHARED ${ENGINE_SOURCES})
-target_include_directories(ik_engine PUBLIC "${PROJECT_SOURCE_DIR}/engine")
+add_library(ik_engine SHARED ${ALL_SOURCES})
+
+target_include_directories(ik_engine PUBLIC
+    "${PROJECT_SOURCE_DIR}/engine"
+    "${PROJECT_SOURCE_DIR}/engine/geometricSolver"
+)
+
 target_link_libraries(ik_engine PUBLIC m)
-
-add_executable(2DOF_app src/main.c)
-target_link_libraries(2DOF_app PRIVATE ik_engine)
